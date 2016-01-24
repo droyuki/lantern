@@ -9,6 +9,7 @@ import { flux } from 'Decorator';
 // Section image
 import appIcon from 'Source/images/app-icon.png';
 import techIcon from 'Source/images/tech-icon.png';
+import dockerIcon from 'Source/images/docker-icon.png'
 
 // Avatar
 import avatar1 from 'Source/images/avatar-1.png';
@@ -50,7 +51,7 @@ class LandingPage extends React.Component {
 						<span>{this.flux.getState('Service').name}</span>
 					</h1>
 					<h2 className={'ui inverted header'}>
-						<I18n sign='landing_page.subtitle'>Isomorphic WebApp Boilerplate<br /> with ES6, Node.js, Koa, React and Webpack.</I18n>
+						<I18n sign='landing_page.subtitle'>Data analysis service<br /> with Hadoop, Storm, Spark and Kafka.</I18n>
 					</h2>
 					<br />
 					<button className={'massive ui inverted button'} onClick={this.about}>
@@ -86,7 +87,7 @@ class LandingPage extends React.Component {
 					<div className={'ui basic aligned very padded segment'}>
 						<div className={'ui two column middle aligned stackable grid'}>
 							<div className={'column'}>
-								<img src={techIcon} className={'ui large centered image'} />
+								<img src={dockerIcon} className={'ui large centered image'} />
 							</div>
 							<div className={'column'}>
 								<div className={'ui basic left aligned segment'}>
@@ -147,7 +148,7 @@ class LandingPage extends React.Component {
 				</section>
 
 				<div className={'ui basic inverted center aligned segment'}>
-					<span>Copyright &copy; 2015 Lantern Project. All Rights Reserved.</span>
+					<span>Copyright &copy; 2015 IoT-BigData Research Center. All Rights Reserved.</span>
 				</div>
 			</div>
 		);

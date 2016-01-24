@@ -5,7 +5,7 @@ var SignUpPage = require('./components/SignUpPage.jsx');
 var SettingsPage = require('./components/SettingsPage.jsx');
 var NotFoundPage = require('./components/NotFoundPage.jsx');
 var ResetPasswordPage = require('./components/ResetPasswordPage.jsx');
-
+var Test = require('./components/Form/test.js');
 module.exports = [
 	{
 		path: '/404',
@@ -68,5 +68,9 @@ module.exports = [
 		allow: 'admin.roles',
 		path: '/admin/roles/role/:roleid',
 		handler: require('./components/Admin/Role.jsx')
-	}
+	},
+    {
+        path: '/newservice',
+        handler: Test
+    }
 ];
