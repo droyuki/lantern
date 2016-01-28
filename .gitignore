@@ -32,3 +32,7 @@ locales
 
 # local configuration file
 configs/general.json
+
+#build
+build/
+.idea/
