@@ -21,7 +21,7 @@ export default class Form extends React.Component {
     handleSubmit(data) {
         const cmd = (JSON.stringify(data, undefined, 2))
         console.log("submit" + cmd);
-        swal("Success!", cmd, "success");
+        //swal("Success!", cmd, "success");
     }
 
     render() {

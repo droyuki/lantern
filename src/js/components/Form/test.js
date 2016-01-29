@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
+import FileInput from 'react-file-input';
 import I18n from 'Extension/I18n.jsx';
 // Decorators
 import { router, flux, i18n } from 'Decorator';
@@ -59,6 +60,27 @@ class Test extends React.Component {
         this.setState(change)
     }
 
+    handleFileChange(event) {
+        var file = event.target.files[0];
+        var formData = new FormData();
+        formData.append('file',  file, file.name);
+        $.ajax({
+            url: "/upload",
+            data: formData,
+            type: 'POST',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                console.log('[ajax]Success!', data);
+            },
+            error: function() {
+                console.error('Error uploading the file.');
+            },
+        });
+        console.log('Selected file:', event.target.files[0]);
+    }
+
     render() {
 
         return (
@@ -78,7 +100,6 @@ class Test extends React.Component {
                             </h1>
 
                             <div className={'ui basic segment'}>
-
 
                                 <form className='ui form' onSubmit={this.submit}>
                                     <div className="field">
@@ -102,15 +123,26 @@ class Test extends React.Component {
                                         </div>
                                     </div>
 
-                                    <div className="inline fields ui left labeled input">
-                                        <a className="ui label">資料型態</a>
-                                        <select type="select" defaultValue="none" ref="dataType"
-                                                className="ui dropdown"
-                                                onChange={this.handleChange.bind(this, "dataType")}>
-                                            <option value="none">None</option>
-                                            <option value="stream">Streaming</option>
-                                            <option value="nonStream">Non-Streaming</option>
-                                        </select>
+                                    <div className="field">
+                                        <div className="ui left labeled input">
+                                            <a className="ui label">資料型態</a>
+                                            <select type="select" defaultValue="none" ref="dataType"
+                                                    className="ui dropdown"
+                                                    onChange={this.handleChange.bind(this, "dataType")}>
+                                                <option value="none">None</option>
+                                                <option value="stream">Streaming</option>
+                                                <option value="nonStream">Non-Streaming</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div className="field">
+                                            <FileInput
+                                                name="myImage"
+                                                accept=".jar"
+                                                placeholder="Click to upload your jar file"
+                                                className="inputClass ui button"
+                                                onChange={this.handleFileChange}/>
                                     </div>
 
                                     <div className="ui buttons fluid middle center aligned">
@@ -125,7 +157,6 @@ class Test extends React.Component {
                                             Clear
                                         </button>
                                     </div>
-
 
                                 </form>
                             </div>

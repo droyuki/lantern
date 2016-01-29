@@ -97,14 +97,20 @@ class Header extends React.Component {
         }
 
         var createService;
-        if (this.state.user.logined){
-            createService=(
-                <Link to='/newservice' className="item">
-                    新增服務
+        var uploadService;
+        if (this.state.user.logined) {
+            createService = (
+                    <Link to='/newservice' className="item">
+                        新增服務
+                    </Link>
+            )
+            uploadService = (
+                <Link to='/upload' className="item">
+                    上傳任務
                 </Link>
             )
         } else {
-            createService=(
+            createService = (
                 <Link to='/signup' className="item">
                     立即註冊
                 </Link>
@@ -117,6 +123,7 @@ class Header extends React.Component {
                     <div>{this.state.service.name}</div>
                 </Link>
                 {createService}
+                {uploadService}
                 {loginState}
             </div>
         );

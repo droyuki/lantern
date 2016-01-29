@@ -125,6 +125,9 @@ app.use(require('./routes/admin/role').middleware());
 //kafka
 app.use(require('./routes/kafka/kafka').middleware());
 
+//upload
+app.use(require('./routes/upload').middleware());
+
 co(function *() {
 
 	// Initializing react app
